@@ -18,13 +18,10 @@ import java.util.StringTokenizer;
 public class Main {
 
 	public static void main(String[] args) throws IOException, ParseException {
-		// TODO Auto-generated method stub
+
 		ArrayList<Ticket> ticketList = importTicketCsv(new File("evmutf.txt"));
 		ArrayList<TimeLog> spentTimeRecordList = importTimeLogCsv(new File("timelog.csv"));
-		/*
-		 * for (Ticket ticket : ticketList) {
-		 * System.out.println(ticket.getUpdateTime()); }
-		 */
+
 		// タイムライン生成
 		ArrayList<EvmUnitData> evmUnitDataList = calcEvm(ticketList, spentTimeRecordList);
 		
@@ -106,7 +103,6 @@ public class Main {
 		double ev = 0;
 		double ac = 0;
 		double bac = 0;
-		// ArrayList<Ticket> ticketListAC = new ArrayList<Ticket>(ticketList);
 
 		// bac (and remove ticket which has no estimatedTime data)
 		Iterator<Ticket> it = ticketList.iterator();

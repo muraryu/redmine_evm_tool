@@ -1,27 +1,27 @@
-package src;
+package evm;
 
 import java.util.Date;
 
 /**
- * 時系列EVMデータの一時点を示すデータ
- * 
+ * one data of time series EVM data.
+ *
  * @author ryuji
  *
  */
 public class EvmUnitData {
 
 	private Date date;
-	
-	private double pv = 0; // アーンド・バリュー（出来高） (EV, Earned Value)
-	private double ev = 0; // プランド・バリュー（計画価値） (PV, Planned Value)
-	private double ac = 0; // 実コスト (AC, Actual Cost)
-	private double bac = 0; // 完成時総予算 (BAC, Budget at Completion)
-	private double cv = 0; // コスト差異 (CV, Cost Variance)
-	private double sv = 0; // スケジュール差異 (SV, Schedule Variance)
-	private double cpi = 0; // コスト効率指数 (CPI, Cost Performance Index)
-	private double spi = 0; // スケジュール効率指数(SPI, Schedule Performance Index)
-	private double eac = 0; // 完成時総コスト見積り (EAC, Estimate At Completion)
-	private double etc = 0; // 残作業のコスト見積り (ETC, Estimate To Completion)
+
+	private double pv = 0; // EV, Earned Value
+	private double ev = 0; // PV, Planned Value
+	private double ac = 0; // AC, Actual Cost
+	private double bac = 0; // BAC, Budget at Completion
+	private double cv = 0; // CV, Cost Variance
+	private double sv = 0; // SV, Schedule Variance
+	private double cpi = 0; // CPI, Cost Performance Index
+	private double spi = 0; // SPI, Schedule Performance Index
+	private double eac = 0; // EAC, Estimate At Completion
+	private double etc = 0; // ETC, Estimate To Completion
 
 	public EvmUnitData(Date date, double pv, double ev, double ac, double bac) {
 		this.date = date;
@@ -92,7 +92,7 @@ public class EvmUnitData {
 	public double getEtc() {
 		return etc;
 	}
-	
-	
+
+
 
 }

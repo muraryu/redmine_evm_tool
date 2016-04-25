@@ -1,4 +1,4 @@
-package src;
+package redmine;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,29 +7,29 @@ import java.util.Date;
 public class Ticket {
 
 	private Integer ticketNumber; // #
-	private String tracker; // ãƒˆãƒ©ãƒƒã‚«ãƒ¼
-	private String status; // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
-	private String title; // é¡Œå
-	private String userAssigned; // æ‹…å½“è€…
-	private Double estimatedTime; // äºˆå®šå·¥æ•°
-	private Double spentTime; // ä½œæ¥­æ™‚é–“
-	private Date dueDate; // æœŸæ—¥
-	private String project; // ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
-	private Integer parentTicketNumber; // è¦ªãƒã‚±ãƒƒãƒˆ
-	private String priority; // å„ªå…ˆåº¦
-	private String userCreated; // ä½œæˆè€…
-	private Date updateTime; // æ›´æ–°æ—¥
-	private String category; // ã‚«ãƒ†ã‚´ãƒª
-	private String targetVersion; // å¯¾è±¡ãƒãƒ¼ã‚¸ãƒ§ãƒ³
-	private Date startDate; // é–‹å§‹æ—¥
-	private Double sumEstimatedTime; // åˆè¨ˆäºˆå®šå·¥æ•°
-	private Double sumSpentTime; // åˆè¨ˆä½œæ¥­æ™‚é–“
-	private Integer done; // é€²æ—ç‡
-	private Date addDate; // ä½œæˆæ—¥
-	private Date closeDate; // çµ‚äº†æ—¥
-	private Integer relatedTicket; // é–¢é€£ã™ã‚‹ãƒã‚±ãƒƒãƒˆ
-	private String privateFlag; // ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆ
-	
+	private String tracker; // ƒgƒ‰ƒbƒJ[
+	private String status; // ƒXƒe[ƒ^ƒX
+	private String title; // ‘è–¼
+	private String userAssigned; // ’S“–Ò
+	private Double estimatedTime; // —\’èH”
+	private Double spentTime; // ì‹ÆŠÔ
+	private Date dueDate; // Šú“ú
+	private String project; // ƒvƒƒWƒFƒNƒg
+	private Integer parentTicketNumber; // eƒ`ƒPƒbƒg
+	private String priority; // —Dæ“x
+	private String userCreated; // ì¬Ò
+	private Date updateTime; // XV“ú
+	private String category; // ƒJƒeƒSƒŠ
+	private String targetVersion; // ‘ÎÛƒo[ƒWƒ‡ƒ“
+	private Date startDate; // ŠJn“ú
+	private Double sumEstimatedTime; // ‡Œv—\’èH”
+	private Double sumSpentTime; // ‡Œvì‹ÆŠÔ
+	private Integer done; // i’»—¦
+	private Date addDate; // ì¬“ú
+	private Date closeDate; // I—¹“ú
+	private Integer relatedTicket; // ŠÖ˜A‚·‚éƒ`ƒPƒbƒg
+	private String privateFlag; // ƒvƒ‰ƒCƒx[ƒg
+
 	public Integer getTicketNumber() {
 		return ticketNumber;
 	}
@@ -122,14 +122,14 @@ public class Ticket {
 		return privateFlag;
 	}
 
-	// Stringã§ã‚»ãƒƒãƒˆ
+	// String‚ÅƒZƒbƒg
 	public void setTicketNumber(String ticketNumber) {
 		this.ticketNumber = Integer.parseInt(ticketNumber);
 	}
 
 	public void putData(String columTitle, String data) throws ParseException {
 
-		// ç©ºã®å ´åˆã¯æ ¼ç´ã—ãªã„
+		// ‹ó‚Ìê‡‚ÍŠi”[‚µ‚È‚¢
 		if (data.equals("\"\"")) {
 			return;
 		}
@@ -139,75 +139,75 @@ public class Ticket {
 		case "#":
 			this.ticketNumber = Integer.parseInt(data);
 			break;
-		case "ãƒˆãƒ©ãƒƒã‚«ãƒ¼":
+		case "ƒgƒ‰ƒbƒJ[":
 			this.tracker = data;
 			break;
-		case "ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹":
+		case "ƒXƒe[ƒ^ƒX":
 			this.status = data;
 			break;
-		case "é¡Œå":
+		case "‘è–¼":
 			this.title = data;
 			break;
-		case "æ‹…å½“è€…":
+		case "’S“–Ò":
 			this.userAssigned = data;
 			break;
-		case "äºˆå®šå·¥æ•°":
+		case "—\’èH”":
 			this.estimatedTime = Double.parseDouble(data);
 			break;
-		case "ä½œæ¥­æ™‚é–“":
+		case "ì‹ÆŠÔ":
 			this.spentTime = Double.parseDouble(data);
 			break;
-		case "æœŸæ—¥":
+		case "Šú“ú":
 			sdf = new SimpleDateFormat("yyyy/MM/dd");
 			this.dueDate = sdf.parse(data);
 			break;
-		case "ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ":
+		case "ƒvƒƒWƒFƒNƒg":
 			this.project = data;
 			break;
-		case "è¦ªãƒã‚±ãƒƒãƒˆ":
+		case "eƒ`ƒPƒbƒg":
 			this.parentTicketNumber = Integer.parseInt(data);
 			break;
-		case "å„ªå…ˆåº¦":
+		case "—Dæ“x":
 			this.priority = data;
 			break;
-		case "ä½œæˆè€…":
+		case "ì¬Ò":
 			this.userCreated = data;
 			break;
-		case "æ›´æ–°æ—¥":
+		case "XV“ú":
 			sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			this.updateTime = sdf.parse(data);
 			break;
-		case "ã‚«ãƒ†ã‚´ãƒª":
+		case "ƒJƒeƒSƒŠ":
 			this.category = data;
 			break;
-		case "å¯¾è±¡ãƒãƒ¼ã‚¸ãƒ§ãƒ³":
+		case "‘ÎÛƒo[ƒWƒ‡ƒ“":
 			this.targetVersion = data;
 			break;
-		case "é–‹å§‹æ—¥":
+		case "ŠJn“ú":
 			sdf = new SimpleDateFormat("yyyy/MM/dd");
 			this.startDate = sdf.parse(data);
 			break;
-		case "åˆè¨ˆäºˆå®šå·¥æ•°":
+		case "‡Œv—\’èH”":
 			this.sumEstimatedTime = Double.parseDouble(data);
 			break;
-		case "åˆè¨ˆä½œæ¥­æ™‚é–“":
+		case "‡Œvì‹ÆŠÔ":
 			this.sumSpentTime = Double.parseDouble(data);
 			break;
-		case "é€²æ—ç‡":
+		case "i’»—¦":
 			this.done = Integer.parseInt(data);
 			break;
-		case "ä½œæˆæ—¥":
+		case "ì¬“ú":
 			sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			this.addDate = sdf.parse(data);
 			break;
-		case "çµ‚äº†æ—¥":
+		case "I—¹“ú":
 			sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			this.closeDate = sdf.parse(data);
 			break;
-		case "é–¢é€£ã™ã‚‹ãƒã‚±ãƒƒãƒˆ":
+		case "ŠÖ˜A‚·‚éƒ`ƒPƒbƒg":
 			this.relatedTicket = Integer.parseInt(data);
 			break;
-		case "ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆ":
+		case "ƒvƒ‰ƒCƒx[ƒg":
 			this.privateFlag = data;
 			break;
 		}

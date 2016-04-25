@@ -1,4 +1,4 @@
-package src;
+package evm;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,44 +15,33 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
-public class Main {
+import redmine.Ticket;
 
-	public static void main(String[] args) throws IOException, ParseException {
+public class EvmMain {
 
-		ArrayList<Ticket> ticketList = importTicketCsv(new File("evmutf.txt"));
-		ArrayList<TimeLog> spentTimeRecordList = importTimeLogCsv(new File("timelog.csv"));
+	public void exportEvmData(ArrayList<EvmUnitData> evmUnitDataList, File file) throws IOException {
 
-		// タイムライン生成
-		ArrayList<EvmUnitData> evmUnitDataList = calcEvm(ticketList, spentTimeRecordList);
-		
-		// csv出力
-		exportEvmData(evmUnitDataList, new File("evm.csv"));
-
-	}
-
-	private static void exportEvmData(ArrayList<EvmUnitData> evmUnitDataList, File file) throws IOException {
-		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		
+
 		bw.write("date,pv,ev,ac,bac,cv,sv,cpi,spi,eac,etc");
 		bw.newLine();
-		for(EvmUnitData evmUnitData : evmUnitDataList) {
+		for (EvmUnitData evmUnitData : evmUnitDataList) {
 			DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 			bw.write(df.format(evmUnitData.getDate()) + "," + evmUnitData.getPv() + "," + evmUnitData.getEv() + "," + evmUnitData.getAc() + "," + evmUnitData.getBac() + "," + evmUnitData.getCv() + "," + evmUnitData.getSv() + "," + evmUnitData.getCpi() + "," + evmUnitData.getSpi() + "," + evmUnitData.getEac() + "," + evmUnitData.getEtc());
 			bw.newLine();
 		}
-		
+
 		bw.close();
-		
+
 	}
 
 	/**
 	 * プロジェクト期間のタイムライン生成
-	 * 
+	 *
 	 * @param ticketList
 	 * @return
 	 */
-	private static ArrayList<EvmUnitData> calcEvm(ArrayList<Ticket> ticketList, ArrayList<TimeLog> timeLogList) {
+	public ArrayList<EvmUnitData> calcEvm(ArrayList<Ticket> ticketList, ArrayList<TimeLog> timeLogList) {
 
 		// 引数チェック
 		if (ticketList == null || ticketList.size() == 0) {
@@ -163,7 +152,7 @@ public class Main {
 					itAC.remove();
 				}
 			}
-			
+
 			System.out.println(calendar.getTime() + "\t" + pv + "\t" + ev + "\t" + ac + "\t" + bac);
 			evmUnitDataList.add(new EvmUnitData(date, pv, ev, ac, bac));
 		}
@@ -171,7 +160,7 @@ public class Main {
 		return evmUnitDataList;
 	}
 
-	private static ArrayList<Ticket> importTicketCsv(File file) throws IOException, ParseException {
+	public ArrayList<Ticket> importTicketCsv(File file) throws IOException, ParseException {
 		ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
 
 		// ファイルを読み込む
@@ -211,7 +200,7 @@ public class Main {
 		return ticketList;
 	}
 
-	private static ArrayList<TimeLog> importTimeLogCsv(File file) throws IOException, ParseException {
+	public ArrayList<TimeLog> importTimeLogCsv(File file) throws IOException, ParseException {
 		ArrayList<TimeLog> timeLogList = new ArrayList<TimeLog>();
 
 		// ファイルを読み込む
@@ -247,7 +236,7 @@ public class Main {
 
 		// 終了処理
 		br.close();
-		
+
 		System.out.println(timeLogList.get(0).getDate());
 
 		return timeLogList;

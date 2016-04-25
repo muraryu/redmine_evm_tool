@@ -1,4 +1,4 @@
-package src;
+package evm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,50 +6,50 @@ import java.util.Date;
 
 public class TimeLog {
 
-	private String project;		// ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
-	private Date date;			// æ—¥ä»˜
+	private String project;		// ƒvƒƒWƒFƒNƒg
+	private Date date;			// “ú•t
 	private Integer week;		// Week
-	private String user;		// ãƒ¦ãƒ¼ã‚¶ãƒ¼
-	private String activity;	// æ´»å‹•
-	private String title;		// ãƒã‚±ãƒƒãƒˆ
-	private String comment;		// ã‚³ãƒ¡ãƒ³ãƒˆ
-	private Double spentTime;	// æ™‚é–“
-	
+	private String user;		// ƒ†[ƒU[
+	private String activity;	// Šˆ“®
+	private String title;		// ƒ`ƒPƒbƒg
+	private String comment;		// ƒRƒƒ“ƒg
+	private Double spentTime;	// ŠÔ
+
 	public void putData(String columTitle, String data) throws ParseException {
-		
-		// ç©ºã®å ´åˆã¯æ ¼ç´ã—ãªã„
+
+		// do nothing if no data.
 		if (data.equals("\"\"")) {
 			return;
 		}
-		
+
 		switch (columTitle) {
-		case "ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ" :
+		case "ƒvƒƒWƒFƒNƒg" :
 			this.project = data;
 			break;
-		case "æ—¥ä»˜":
+		case "“ú•t":
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			this.date = sdf.parse(data);
 			break;
 		case "Week":
 			this.week = Integer.parseInt(data);
 			break;
-		case "ãƒ¦ãƒ¼ã‚¶ãƒ¼":
+		case "ƒ†[ƒU[":
 			this.user = data;
 			break;
-		case "æ´»å‹•":
+		case "Šˆ“®":
 			this.activity = data;
 			break;
-		case "ãƒã‚±ãƒƒãƒˆ":
+		case "ƒ`ƒPƒbƒg":
 			this.title = data;
 			break;
-		case "ã‚³ãƒ¡ãƒ³ãƒˆ":
+		case "ƒRƒƒ“ƒg":
 			this.comment = data;
 			break;
-		case "æ™‚é–“":
+		case "ŠÔ":
 			this.spentTime = Double.parseDouble(data);
 			break;
 		}
-		
+
 	}
 
 	public String getProject() {
@@ -83,5 +83,5 @@ public class TimeLog {
 	public Double getSpentTime() {
 		return spentTime;
 	}
-	
+
 }
